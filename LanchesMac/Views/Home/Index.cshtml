@@ -1,4 +1,4 @@
-﻿@*@model HomeViewModel
+﻿@model HomeViewModel
 
     <partial name="_carousel"/>
 
@@ -8,16 +8,7 @@
     <div class="row">
          @foreach (var lanche in Model.LanchesPreferidos)
                 {
-                    <partial name="_lanchesResumo" for="@Lanche"/>
+                    <partial name="_lanchesResumo" for="@lanche"/>
                 }
     </div>
-*@
-@{
-    ViewData["Title"] = "Home Page";
-}
-
-<div class="text-center">
-    <h1 class="display-3">Welcome</h1>
-    <h2 class="display-4"> Curso Asp.Net Core MVC</h2>
-    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
-</div>
+    
