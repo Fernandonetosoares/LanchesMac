@@ -1,4 +1,5 @@
 ﻿using LanchesMac.Context;
+using LanchesMac.Controllers;
 using Microsoft.AspNetCore.Http;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
@@ -18,7 +19,7 @@ namespace LanchesMac.Models
             _context = contexto;
         }
         public string CarrinhoCompraId { get; set; }
-        public List<CarrinhoCompraItem> CarrinhoCompraItens { get;set }
+        public List<CarrinhoCompraItem> CarrinhoCompraItens { get; set; }
 
         public static CarrinhoCompra GetCarrinho(IServiceProvider services)
         {
@@ -42,7 +43,7 @@ namespace LanchesMac.Models
             };
         }
 
-        public void AdicionarAoCarrinho(Lanche lanche, int quantidade)
+        public void AdicionarAoCarrinho(Lanche lanche)
         {
             //obttem o lanche do carrinho 
             var carrinhoCompraItem =
@@ -119,6 +120,11 @@ namespace LanchesMac.Models
                 .Select(c => c.Lanche.Preco * c.Quantidade).Sum();
 
             return total;
+        }
+
+        public static implicit operator CarrinhoCompra(CarrinhoCompraController v)
+        {
+            throw new NotImplementedException();
         }
     }
 }
